@@ -11,8 +11,15 @@ namespace TeamCityBuild
     {
         static void Main(string[] args)
         {
-            Directory.CreateDirectory("Artifacts");
-            File.WriteAllText(Path.Combine("Artifacts", "Output.txt"), $"{DateTime.Now} test!");
+            var artifactsDirectory = "Artifacts";
+            if (Directory.Exists(artifactsDirectory))
+            {
+                Directory.Delete(artifactsDirectory, true);
+            }
+
+            Directory.CreateDirectory(artifactsDirectory);
+            
+            File.WriteAllText(Path.Combine(artifactsDirectory, "Output.txt"), $"{DateTime.Now} test!");
         }
     }
 }
