@@ -11,7 +11,8 @@ namespace TeamCityBuild
     {
         static void Main(string[] args)
         {
-            File.WriteAllText("Output.txt", $"{DateTime.Now} test!");
+            Directory.CreateDirectory("Artifacts");
+            File.WriteAllText(Path.Combine("Artifacts", "Output.txt"), $"{DateTime.Now} test!");
         }
     }
 }
